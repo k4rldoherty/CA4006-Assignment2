@@ -1,3 +1,4 @@
+import sys
 import requests
 import datetime
 
@@ -17,17 +18,13 @@ def submit_proposal(researcher_id, acronym, title, description, budget, end_date
 
 
 def main():
-    researcher_id = 2
-    acronym =  "ABC"
-    title = "Example Research Proposal 2"
-    description ="This is an example research proposal 2."
-    budget = 500_000
-        # Add more research proposals here as needed
-    current_date = datetime.datetime.now()
-    endate = current_date + datetime.timedelta(days=365)
-    end_date = endate.strftime('%d-%m-%Y')
+    researcher_id = sys.argv[1]
+    acronym = sys.argv[2] 
+    title = sys.argv[3]
+    description = sys.argv[4]
+    budget = float(sys.argv[5])
+    end_date = sys.argv[6]
 
- 
     print(submit_proposal(researcher_id, acronym,title,description, budget, end_date))
 
 if __name__ == "__main__":

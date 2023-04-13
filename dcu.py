@@ -7,8 +7,10 @@ approved_project = {}
 
 # Define routes for DCU app
 @app.get("/dcu/transactions/{project_id}")
-async def get_project_transactions(project_id: str):
+async def get_project_transactions(project_id: str, researcher_id: int):
     # Logic for getting project details
+    if researcher_id != approved_project[project_id]["researcher"]:
+        raise HTTPException(status_code=400, detail="User does not have access")
     transactions_arr  = approved_project[project_id]["transactions"]
     return {"project_id": project_id, "transactions": f"Transactions: {transactions_arr}"}
 

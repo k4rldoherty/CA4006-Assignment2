@@ -1,5 +1,5 @@
 import requests
-import datetime
+import sys
 
 def withdraw(researcher_id, acronym):
     researcher_url = "http://localhost:8001"
@@ -13,8 +13,8 @@ def withdraw(researcher_id, acronym):
 
 
 def main():
-    researcher_id = 2
-    acronym =  "ABC"
+    researcher_id = sys.argv[1]
+    acronym =  sys.argv[2]
     
     print(withdraw(researcher_id, acronym))
 

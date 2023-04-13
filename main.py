@@ -10,7 +10,6 @@ researcher_process = subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'py', 
 dcu_process = subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'py', 'dcu.py'])
 
 # Take input as integer
-
 while True:
     research_id = input("Enter your Researcher ID number:")
     
@@ -25,32 +24,40 @@ while True:
         option = input("Enter your choice: ")
         if option == '1':
             try:
-                # Run proposal_submission.py using subprocess
-                subprocess.run(['py', 'proposal_submission.py'])
+                print("\nPlease enter details:")
+                acronym = input('Project Code: ')
+                title = input('Project Title:')
+                description = input('Project Description: ')
+                budget = input("Amount of funding being requested(€):")
+                end_date = input("End date(DD-MM-YYYY):")
+                subprocess.run(['py', 'proposal_submission.py', research_id, acronym, title, description, budget, end_date])
             except FileNotFoundError:
                 print("Option unavailable")
         elif option == '2':
             try:
-                # Run withdraw-submission.py using subprocess
-                subprocess.run(['py', 'withdraw_submission.py'])
+                acronym = input('Project Code: ')
+                amount = input("Amount to withdraw(€):")
+                subprocess.run(['py', 'withdraw.py', research_id, acronym, amount])
             except FileNotFoundError:
                 print("driver.py file not found!")
         elif option == '3':
             try:
-                # Run withdraw-submission.py using subprocess
-                subprocess.run(['py', 'edit_researchers.py', "add"])
+                acronym = input('Project Code: ')
+                other_id = input('Researcher to add to account (ID): ')
+                subprocess.run(['py', 'edit_researchers.py', "add", research_id, acronym, other_id])
             except FileNotFoundError:
                 print("driver.py file not found!")
         elif option == '4':
             try:
-                # Run withdraw-submission.py using subprocess
-                subprocess.run(['py', 'edit_researchers.py', "del"])
+                acronym = input('Project Code: ')
+                other_id = input('Researcher to remove from account (ID): ')
+                subprocess.run(['py', 'edit_researchers.py', "del", research_id, acronym, other_id])
             except FileNotFoundError:
                 print("driver.py file not found!")
         elif option == '5':
             try:
-                # Run withdraw-submission.py using subprocess
-                subprocess.run(['py', 'view_transactions.py'])
+                acronym = input('Project Code: ')
+                subprocess.run(['py', 'view_transactions.py',research_id, acronym])
             except FileNotFoundError:
                 print("driver.py file not found!")
         elif option == '6':

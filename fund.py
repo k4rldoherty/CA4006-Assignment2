@@ -29,7 +29,7 @@ async def approve(researcher_id: int, acronym: str, title: str, description: str
     async with httpx.AsyncClient() as client:
         await client.post(submit_proposal_url, params=params)
 
-    return {"id": acronym, "status": "approved", "fund_left": TOTAL_BUDGET}
+    return {"id": acronym, "status": "Has Been approved & DCU have been notified", "fund_left": TOTAL_BUDGET}
 
 # Run the funding group app
 if __name__ == "__main__":

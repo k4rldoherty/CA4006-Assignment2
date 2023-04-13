@@ -16,16 +16,15 @@ def edit(researcher_id, acronym, other_id, action):
 
 
 def main():
-    researcher_id = 2
-    other_id = 5
-    acronym =  "ABC"
     if sys.argv[1] == "add":
         action = "add"
     elif sys.argv[1] == "del":
         action = "del"
+    researcher_id = sys.argv[2]
+    other_id = int(sys.argv[4])
+    acronym =  sys.argv[3]
     
-    print(action)
-    #print(edit(researcher_id, acronym, other_id, action))
+    print(edit(researcher_id, acronym, other_id, action))
 
 if __name__ == "__main__":
     main()

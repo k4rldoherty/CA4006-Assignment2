@@ -27,7 +27,7 @@ async def submit_proposal_async(researcher_id: int, acronym: str, title: str, de
         if response.status_code == 200:
             status = response.json()["status"]
         else:
-            status = 'Project was not approved'
+            status = response.json()["detail"]
     return {"status": status, "acronym" : acronym}
 
 @app.post("/researcher/{researcher_id}/submit_proposal")
@@ -50,7 +50,7 @@ async def withdraw_async(researcher_id: int, acronym: str, amount: float, date: 
         if response.status_code == 200:
             status = response.json()["status"]
         else:
-            status = 'Could not withdraw'
+            status = response.json()["detail"]
     return {"status": status, "acronym" : acronym}
 
 @app.post("/researcher/{researcher_id}/withdraw_request")
@@ -73,7 +73,7 @@ async def edit_async(researcher_id: int, acronym: str, other_id: int, action: st
         if response.status_code == 200:
             status = response.json()["status"]
         else:
-            status = 'Could not edit researchers'
+            status = response.json()["detail"]
     return {"status": status, "acronym" : acronym}
 
 @app.post("/researcher/{acronym}/edit")

@@ -1,3 +1,4 @@
+import sys
 import requests
 import datetime
 
@@ -15,13 +16,12 @@ def withdraw(researcher_id, acronym, amount, date):
 
 
 def main():
-    researcher_id = 2
-    acronym =  "ABC"
-    amount = 10_000.0
+    researcher_id = sys.argv[1]
+    acronym =  sys.argv[2]
+    amount = float(sys.argv[3])
     current_date = datetime.datetime.now()
     date = current_date.strftime('%d-%m-%Y')
 
- 
     print(withdraw(researcher_id, acronym, amount, date))
 
 if __name__ == "__main__":
