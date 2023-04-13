@@ -1,15 +1,15 @@
 import subprocess
 
-# Start fund.py in a new Command Prompt window
+# Start fund server
 fund_process = subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'py', 'fund.py'])
 
-# Start researcher.py in a new Command Prompt window
+# Start researcher server
 researcher_process = subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'py', 'researcher.py'])
 
-# Start dcu.py in a new Command Prompt window
+# Start dcu server
 dcu_process = subprocess.Popen(['cmd', '/c', 'start', 'cmd', '/k', 'py', 'dcu.py'])
 
-# Take input as integer
+
 while True:
     research_id = input("Enter your Researcher ID number:")
     

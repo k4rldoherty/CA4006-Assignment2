@@ -5,10 +5,8 @@ app = FastAPI()
 
 approved_project = {}
 
-# Define routes for DCU app
 @app.get("/dcu/transactions/{project_id}")
 async def get_project_transactions(project_id: str, researcher_id: int):
-    # Logic for getting project details
     if researcher_id != approved_project[project_id]["researcher"]:
         raise HTTPException(status_code=400, detail="User does not have access")
     transactions_arr  = approved_project[project_id]["transactions"]
@@ -16,7 +14,6 @@ async def get_project_transactions(project_id: str, researcher_id: int):
 
 @app.post("/dcu/{project_id}/notify")
 async def notify(project_id: str, budget: float, researcher_id: int, end_date: str):
-    # Logic for notifying DCU about approved project
     approved_project[project_id] = {"balance":budget,"researcher": researcher_id, "end_date": end_date, "transactions": {}, "researchers":[]}
     return {"message": "Project notification sent successfully!","projects": approved_project }
 
@@ -63,7 +60,6 @@ async def withdraw(project_id: str, researcher_id: int, other_id: int, action:st
             return {"status": f"removed succesfully, current researchers: {researchers_list}"}
     
 
-# Run the DCU app
 if __name__ == "__main__":
     import uvicorn
 

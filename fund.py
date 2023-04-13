@@ -7,7 +7,7 @@ app = FastAPI()
 TOTAL_BUDGET = 1_000_000
 dcu_url = "http://localhost:8003"
 
-# Define routes for funding group app
+
 @app.post("/funding_group/confirm")
 async def approve(researcher_id: int, acronym: str, title: str, description: str, budget: float, end_date: str):
     global TOTAL_BUDGET
@@ -17,7 +17,6 @@ async def approve(researcher_id: int, acronym: str, title: str, description: str
         raise HTTPException(status_code=400, detail="Funding agency budget exceeded")
     TOTAL_BUDGET -= budget
 
-    # Approve the proposal and return its ID
     params = {
         "budget": budget,
         "end_date": end_date,
@@ -31,7 +30,6 @@ async def approve(researcher_id: int, acronym: str, title: str, description: str
 
     return {"id": acronym, "status": "Has Been approved & DCU have been notified", "fund_left": TOTAL_BUDGET}
 
-# Run the funding group app
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8002)

@@ -107,7 +107,6 @@ async def transactions_request(researcher_id: int, acronym: str):
     return {"acronym": result[0]["acronym"],"status": result[0]["transactions"]}
 
 
-# Run the researcher app
 if __name__ == "__main__":
     import uvicorn
 
