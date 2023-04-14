@@ -39,27 +39,27 @@ while True:
                 amount = input("Amount to withdraw(€):")
                 subprocess.run(['py', 'withdraw.py', research_id, acronym, amount])
             except FileNotFoundError:
-                print("driver.py file not found!")
+                print("file not found!")
         elif option == '3':
             try:
                 acronym = input('Project Code: ')
                 other_id = input('Researcher to add to account (ID): ')
                 subprocess.run(['py', 'edit_researchers.py', "add", research_id, acronym, other_id])
             except FileNotFoundError:
-                print("driver.py file not found!")
+                print("file not found!")
         elif option == '4':
             try:
                 acronym = input('Project Code: ')
                 other_id = input('Researcher to remove from account (ID): ')
                 subprocess.run(['py', 'edit_researchers.py', "del", research_id, acronym, other_id])
             except FileNotFoundError:
-                print("driver.py file not found!")
+                print("file not found!")
         elif option == '5':
             try:
                 acronym = input('Project Code: ')
                 subprocess.run(['py', 'view_transactions.py',research_id, acronym])
             except FileNotFoundError:
-                print("driver.py file not found!")
+                print("file not found!")
         elif option == '6':
             print("Logging out....")
             break
